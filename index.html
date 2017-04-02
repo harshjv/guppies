@@ -71,7 +71,7 @@
     $('#go').click(function () {
       var address = $('#eth_address').val()
       gup.balanceOf(address, function (err, data) {
-        $('#gup_balance').val(data.toString())
+        $('#gup_balance').val(Number(data.toString())/1000)
       })
     })
     </script>
