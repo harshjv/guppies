@@ -1,0 +1,17 @@
+{
+  "name": "gup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Harsh Vakharia <harshjv@gmail.com> (https://harshjv.github.io)",
+  "license": "MIT",
+  "devDependencies": {
+    "web3": "^0.18.4"
+  },
+  "dependencies": {
+    "http-server": "^0.9.0"
+  }
+}
