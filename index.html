@@ -13,22 +13,60 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+    body {
+      padding-top: 80px;
+    }
+    </style>
   </head>
   <body>
-    <input id="address"/> <button id="go">Fetch GUP</button> <input id="balance" readonly/>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Guppies</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">Find your GUP balance</div>
+        <div class="panel-body">
+          <form>
+            <div class="form-group">
+              <label>Your Ethereum Address</label>
+              <input id="eth_address" class="form-control" placeholder="0xasdas...">
+            </div>
+            <button type="button" id="go" class="btn btn-default">Fetch Guppies 😃</button>
+          </form>
+        </div>
+        <div class="panel-body">
+          <form>
+            <div class="form-group">
+              <label>GUP Balance</label>
+              <input id="gup_balance" class="form-control" readonly="">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/web3@0.18.4/dist/web3.min.js"></script>
 
     <script>
-    console.log(web3); // {eth: .., shh: ...} // it's here!
     var gup = web3.eth.contract([{"constant":true,"inputs":[],"name":"minter","outputs":[{"name":"","type":"address"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"o_success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_value","type":"uint256"}],"name":"createIlliquidToken","outputs":[{"name":"o_success","type":"bool"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_recipient","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"o_success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"endMintingTime","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_value","type":"uint256"}],"name":"createToken","outputs":[{"name":"o_success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"illiquidBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[{"name":"_recipient","type":"address"},{"name":"_amount","type":"uint256"}],"name":"transfer","outputs":[{"name":"o_success","type":"bool"}],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"LOCKOUT_PERIOD","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"o_remaining","type":"uint256"}],"payable":false,"type":"function"},{"constant":false,"inputs":[],"name":"makeLiquid","outputs":[{"name":"o_success","type":"bool"}],"payable":false,"type":"function"},{"inputs":[{"name":"_minter","type":"address"},{"name":"_endMintingTime","type":"uint256"}],"payable":false,"type":"constructor"},{"payable":false,"type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_recipient","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Approval","type":"event"}]).at('0xf7b098298f7c69fc14610bf71d5e02c60792894c')
 
     $('#go').click(function () {
-      var address = $('#address').val()
+      var address = $('#eth_address').val()
       gup.balanceOf(address, function (err, data) {
-        $('#balance').val(data.toString())
+        $('#gup_balance').val(data.toString())
       })
     })
     </script>
