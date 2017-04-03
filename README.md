@@ -1,7 +1,5 @@
 # Find your GUP balance
 
-Visit [https://guppies.herokuapp.com](https://guppies.herokuapp.com)
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+Visit [https://harshjv.github.io/guppies/](https://harshjv.github.io/guppies/)
 
 Made for [Matchpool](https://matchpool.co)
